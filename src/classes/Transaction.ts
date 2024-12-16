@@ -1,5 +1,6 @@
+import { HasFormatter } from "../interfaces/HasFormatter.js"
 
-export class Transaction {
+export class Transaction implements HasFormatter {
     constructor(private _transaction: string,
         private _fromTo: string,
         private _amount: number,
