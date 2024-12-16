@@ -57,3 +57,5 @@ function getAmount(): number {
 
     return sum
 }
+
+//test

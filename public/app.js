@@ -49,3 +49,4 @@ function getAmount() {
     });
     return sum;
 }
+//test
