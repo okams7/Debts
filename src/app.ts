@@ -1,3 +1,4 @@
+import { ListTemplate } from "./classes/listTemplate.js"
 import { Transaction } from "./classes/Transaction.js"
 
 const form = document.querySelector('.form-container') as HTMLFormElement
@@ -8,7 +9,9 @@ const trStatus = document.querySelector('#status') as HTMLSelectElement
 const fromToLabel = document.querySelector('#fromToLabel') as HTMLLabelElement
 const sumParagraph = document.querySelector('#sum') as HTMLParagraphElement
 const reaction = document.querySelector('#reaction') as HTMLParagraphElement
+const ul = document.querySelector('ul')! // لا داعي لاستدعاء اسم الكلاس بما انه العنصر الوحيد من هذا النوع
 
+const list = new ListTemplate(ul)
 let transactions: Transaction[] = []
 
 form.addEventListener('submit', (e: Event) => {
@@ -25,7 +28,8 @@ form.addEventListener('submit', (e: Event) => {
     else {
         reaction.textContent = "عليك القيام ببعض الاعمال الاضافية"
     }
-    addParagraph(trans.format());
+    // addParagraph(trans.format());
+    list.render(trans, trans.transaction, 'end')
 })
 
 transaction.addEventListener('change', (e: Event) => {
@@ -38,11 +42,11 @@ transaction.addEventListener('change', (e: Event) => {
     }
 })
 
-function addParagraph(text: string) {
-    const paragraph = document.createElement('h2');
-    paragraph.textContent = text;
-    document.body.appendChild(paragraph);
-}
+// function addParagraph(text: string) {
+//     const paragraph = document.createElement('h2');
+//     paragraph.textContent = text;
+//     document.body.appendChild(paragraph);
+// }
 
 function getAmount(): number {
     let sum = 0

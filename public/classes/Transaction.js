@@ -9,6 +9,11 @@ export class Transaction {
         this._amount = _amount;
         this._status = _status;
     }
+    get transaction() {
+        if (this._transaction == "creditor")
+            return "دائن";
+        return "مدين";
+    }
     get amount() {
         if (this._transaction == "creditor")
             return this._amount;
@@ -16,13 +21,7 @@ export class Transaction {
     }
     format() {
         if (this._transaction == "creditor")
-            return `قمت بإدانة ${this._fromTo}
-         مبلغ : ${this._amount} JD ,
-          الحالة: ${this._status}`;
-        return `قمت بالاستدانة من
-          ${this._fromTo}
-         مبلغ : 
-         ${this._amount} JD ,
-          الحالة: ${this._status}`;
+            return `قمت بإدانة ${this._fromTo} مبلغ : ${this._amount} JD , الحالة: ${this._status}`;
+        return `قمت بالاستدانة من ${this._fromTo} مبلغ : ${this._amount} JD , الحالة: ${this._status}`;
     }
 }

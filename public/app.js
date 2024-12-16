@@ -1,3 +1,4 @@
+import { ListTemplate } from "./classes/listTemplate.js";
 import { Transaction } from "./classes/Transaction.js";
 const form = document.querySelector('.form-container');
 const transaction = document.querySelector('#transaction');
@@ -7,6 +8,8 @@ const trStatus = document.querySelector('#status');
 const fromToLabel = document.querySelector('#fromToLabel');
 const sumParagraph = document.querySelector('#sum');
 const reaction = document.querySelector('#reaction');
+const ul = document.querySelector('ul'); // لا داعي لاستدعاء اسم الكلاس بما انه العنصر الوحيد من هذا النوع
+const list = new ListTemplate(ul);
 let transactions = [];
 form.addEventListener('submit', (e) => {
     e.preventDefault();
@@ -20,7 +23,8 @@ form.addEventListener('submit', (e) => {
     else {
         reaction.textContent = "عليك القيام ببعض الاعمال الاضافية";
     }
-    addParagraph(trans.format());
+    // addParagraph(trans.format());
+    list.render(trans, trans.transaction, 'end');
 });
 transaction.addEventListener('change', (e) => {
     const selectedValue = e.target.value;
@@ -32,11 +36,11 @@ transaction.addEventListener('change', (e) => {
         fromToLabel.innerText = "من :";
     }
 });
-function addParagraph(text) {
-    const paragraph = document.createElement('h2');
-    paragraph.textContent = text;
-    document.body.appendChild(paragraph);
-}
+// function addParagraph(text: string) {
+//     const paragraph = document.createElement('h2');
+//     paragraph.textContent = text;
+//     document.body.appendChild(paragraph);
+// }
 function getAmount() {
     let sum = 0;
     transactions.forEach(element => {
