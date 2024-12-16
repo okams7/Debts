@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html dir="rtl">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Debts</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+  <div>
+    <h1>برنامج حساب الديون</h1>
+  </div>
+  <div class="container">
+    <div class="box">
+      <form class="form-container">
+        <div class="form-group">
+          <!-- transaction - حركة -->
+          <label for="transaction">الحركة :</label>
+          <select id="transaction" name="transaction" required>
+            <option value="creditor">دائن</option>
+            <option value="debtor">مدين</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <!-- from/to - من الى -->
+          <label id="fromToLabel" for="from-to"> الى :</label>
+          <input type="text" id="from-to" name="from-to" required>
+        </div>
+        <div class="form-group">
+          <!-- amount - المبلغ -->
+          <label for="amount">المبلغ :</label>
+          <input type="number" id="amount" name="amount" min="1" max="10000" required>
+        </div>
+        <div class="form-group">
+          <!-- status - الحالة -->
+          <label for="status">الحالة:</label>
+          <select id="status" name="status" required>
+            <option value="in-progress">جاري</option>
+            <option value="cancelled">ملغى</option>
+            <option value="completed">تم السداد</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <button type="submit">ادخال</button>
+        </div>
+      </form>
+    </div>
+    <div class="box">
+      <p>المجموع</p>
+      <p class="sum" id="sum">0</p>
+      <p id="reaction"></p>
+    </div>
+  </div>
+
+  <script src="app.js" type="module"></script>
+</body>
+
+</html>
